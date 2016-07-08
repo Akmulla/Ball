@@ -4,6 +4,7 @@ using System.Collections;
 public class BallMove : MonoBehaviour 
 {
 	public float startSpeed;
+	public float acceleration;
 	static float speed;
 	Rigidbody rb;
 
@@ -11,6 +12,7 @@ public class BallMove : MonoBehaviour
 	{
 		speed = startSpeed;
 		rb = GetComponent<Rigidbody> ();
+		StartCoroutine (IncreaseByTime ());
 	}
 		
 	void Update () 
@@ -30,6 +32,15 @@ public class BallMove : MonoBehaviour
 			{
 				speed = value;
 			}
+		}
+	}
+
+	IEnumerator IncreaseByTime()
+	{
+		while (true)
+		{
+			Speed += acceleration;
+			yield return new WaitForSeconds (1.0f);
 		}
 	}
 }
