@@ -3,14 +3,11 @@ using System.Collections;
 
 public class CameraMove : MonoBehaviour 
 {
-	public GameObject ball;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		transform.position = ball.transform.position+new Vector3(-3,3,0);
+	public Transform ball;
+
+	void Update () 
+	{
+		transform.position = ball.position+new Vector3(-3,2,0);
+		transform.LookAt (ball);
 	}
 }
