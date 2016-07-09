@@ -4,13 +4,16 @@ using System.Collections;
 public class GenerateRoad : MonoBehaviour
 {
 	public Transform ball;
-	public GameObject road;
+	GameObject road;
+	Pool pool;
 	float roadSize;
 	float edge;
 
 	void Start ()
 	{
+		pool = GetComponentInChildren<Pool> ();
 		ball = GameObject.Find ("Ball").GetComponent<Transform> ();
+		road = pool.obj;
 		roadSize = road.GetComponent<BoxCollider> ().size.x * road.transform.localScale.x;
 		edge = roadSize/2;
 	}
@@ -25,7 +28,8 @@ public class GenerateRoad : MonoBehaviour
 
 	void Generate()
 	{
-		Instantiate (road, new Vector3 (edge+roadSize,0.0f,0.0f),Quaternion.Euler(90.0f,0.0f,0.0f));
+		//Instantiate (road, new Vector3 (edge+roadSize,0.0f,0.0f),Quaternion.Euler(90.0f,0.0f,0.0f));
+		pool.Activate(new Vector3 (edge+roadSize,0.0f,0.0f),Quaternion.Euler(90.0f,0.0f,0.0f));
 		edge += roadSize;
 	}
 }
