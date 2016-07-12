@@ -40,6 +40,7 @@ public class Pool : MonoBehaviour
         if (tos >= stck.Length)
         {
             Debug.Log("Стек заполнен");
+			Destroy (obj);
             return;
         }
         stck[tos] = obj;

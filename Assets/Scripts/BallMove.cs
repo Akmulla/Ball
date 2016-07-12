@@ -3,12 +3,18 @@ using System.Collections;
 
 public class BallMove : MonoBehaviour 
 {
-	public float startSpeed;
-	public float acceleration;
-	static float speed;
+	[SerializeField]
+	float startSpeed;
+	float speed;
+	[SerializeField]
+	float maxSpeed;
+	[SerializeField]
+	float step;
+	[SerializeField]
+	float acceleration;
 	Rigidbody rb;
 
-	void Start () 
+	void Awake () 
 	{
 		speed = startSpeed;
 		rb = GetComponent<Rigidbody> ();
@@ -20,7 +26,7 @@ public class BallMove : MonoBehaviour
 		rb.velocity = new Vector3 (1, 0, 0)*speed;
 	}
 
-	public static float Speed
+	public float Speed
 	{
 		get
 		{
@@ -28,9 +34,36 @@ public class BallMove : MonoBehaviour
 		}
 		set
 		{
-			if (value >= 0)
+			if ((value >= 0)&&(speed<maxSpeed))
 			{
 				speed = value;
+			}
+		}
+	}
+	/// <summary>
+	/// Set speed to basic
+	/// </summary>
+	public void ResetSpeed()
+	{
+		speed = startSpeed;
+	}
+
+	public void MakeStep(bool moveRight)
+	{
+		if (moveRight)
+		{
+			if (transform.position.z < Edges.rightEdge)
+			{
+				transform.position = Vector3.Lerp
+				(transform.position, new Vector3 (transform.position.x, transform.position.y + step, transform.position.z + step), 0.3f);
+			}
+		}
+		else
+		{
+			if (transform.position.z > Edges.leftEdge)
+			{
+				transform.position = Vector3.Lerp
+				(transform.position, new Vector3 (transform.position.x, transform.position.y + step, transform.position.z - step), 0.3f);
 			}
 		}
 	}

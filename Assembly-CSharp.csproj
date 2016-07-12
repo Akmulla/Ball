@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\BallControl.cs" />
      <Compile Include="Assets\Scripts\BallMove.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
+     <Compile Include="Assets\Scripts\Edges.cs" />
      <Compile Include="Assets\Scripts\GenerateRoad.cs" />
      <Compile Include="Assets\Scripts\Pool.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
