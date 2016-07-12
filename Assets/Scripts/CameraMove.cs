@@ -7,7 +7,7 @@ public class CameraMove : MonoBehaviour
 
 	void Update () 
 	{
-		transform.position = ball.position+new Vector3(-3,2,0);
+		transform.position = ball.position+new Vector3(0,2,-3);
 		transform.LookAt (ball);
 	}
 }

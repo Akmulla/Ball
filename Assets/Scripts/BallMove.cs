@@ -11,6 +11,8 @@ public class BallMove : MonoBehaviour
 	[SerializeField]
 	float step;
 	[SerializeField]
+	float jump;
+	[SerializeField]
 	float acceleration;
 	Rigidbody rb;
 
@@ -23,7 +25,7 @@ public class BallMove : MonoBehaviour
 		
 	void Update () 
 	{
-		rb.velocity = new Vector3 (1, 0, 0)*speed;
+		rb.velocity = new Vector3 (0, 0, 1)*speed;
 	}
 
 	public float Speed
@@ -52,18 +54,18 @@ public class BallMove : MonoBehaviour
 	{
 		if (moveRight)
 		{
-			if (transform.position.z < Edges.rightEdge)
+			if (transform.position.x < Edges.rightEdge)
 			{
 				transform.position = Vector3.Lerp
-				(transform.position, new Vector3 (transform.position.x, transform.position.y + step, transform.position.z + step), 0.3f);
+					(transform.position, new Vector3 (transform.position.x+step, transform.position.y + jump, transform.position.z), 0.3f);
 			}
 		}
 		else
 		{
-			if (transform.position.z > Edges.leftEdge)
+			if (transform.position.x > Edges.leftEdge)
 			{
 				transform.position = Vector3.Lerp
-				(transform.position, new Vector3 (transform.position.x, transform.position.y + step, transform.position.z - step), 0.3f);
+					(transform.position, new Vector3 (transform.position.x-step, transform.position.y + jump, transform.position.z), 0.3f);
 			}
 		}
 	}

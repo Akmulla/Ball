@@ -24,7 +24,7 @@ public class BallControl : MonoBehaviour
 			//if (!EventSystem.current.IsPointerOverGameObject(myTouch.fingerId))
 			{
 				//if (touchPosition.z > transform.position.z)
-				if (myTouch.position.x < Camera.main.pixelWidth/2.0f)
+				if (myTouch.position.x > Camera.main.pixelWidth/2.0f)
 				{
 					moveRight = true;
 				}
