@@ -14,7 +14,7 @@ public class Pool : MonoBehaviour
         tos = size;
         for (int i = 0 ; i < size ; i++)
         {
-            stck[i] = ((GameObject)Instantiate(obj, Vector2.zero, Quaternion.identity));
+			stck[i] = ((GameObject)Instantiate(obj, new Vector3(0.0f,0.0f,15.0f), Quaternion.identity));
             stck[i].SetActive(false);
         }
     }
