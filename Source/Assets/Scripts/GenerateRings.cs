@@ -6,6 +6,10 @@ public class GenerateRings : MonoBehaviour
 	Pool pool;
 	Transform ball;
 	[SerializeField] float spawnDelay;
+	[SerializeField] float minScale;
+	[SerializeField] float maxScale;
+
+	float scale;
 
 	void Start ()
 	{
@@ -18,8 +22,10 @@ public class GenerateRings : MonoBehaviour
 	{
 		while (true)
 		{
-			pool.Activate(new Vector3(Random.Range(Edges.leftEdge,Edges.rightEdge),
-				Random.Range(0.0f,Edges.topEdge),ball.position.z+Random.Range(5.0f,7.0f)),Quaternion.Euler(90.0f,0.0f,0.0f));
+			GameObject obj=pool.Activate(new Vector3(Random.Range(Edges.leftEdge,Edges.rightEdge),
+				Random.Range(0.0f,Edges.topEdge),ball.position.z+Random.Range(20.0f,30.0f)),Quaternion.Euler(90.0f,0.0f,0.0f));
+			scale = Random.Range (minScale, maxScale);
+			obj.transform.localScale = new Vector3 (scale, scale, scale);
 			yield return new WaitForSeconds (spawnDelay);
 		}
 

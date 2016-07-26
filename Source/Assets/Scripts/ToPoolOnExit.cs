@@ -15,7 +15,7 @@ public class ToPoolOnExit : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (transform.position.z < Camera.main.transform.position.z-5.0f)
+		if (transform.position.z < Camera.main.transform.position.z-15.0f)
 		{
 			pool.Deactivate (gameObject);
 		}

@@ -5,6 +5,7 @@ public class InsideRing : MonoBehaviour
 {
 	void OnTriggerExit(Collider other) 
 	{
-		Debug.Log ("sdgg");
+		float scale = transform.parent.localScale.x;
+		Score.SetScore += (int)((100.0f/scale));
 	}
 }

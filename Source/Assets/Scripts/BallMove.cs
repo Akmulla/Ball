@@ -57,7 +57,7 @@ public class BallMove : MonoBehaviour
 			if (transform.position.x < Edges.rightEdge)
 			{
 				transform.position = Vector3.Lerp
-					(transform.position, new Vector3 (transform.position.x+step, transform.position.y + jump, transform.position.z), 0.3f);
+					(transform.position, new Vector3 (transform.position.x+step, transform.position.y + jump, transform.position.z), 0.2f);
 			}
 		}
 		else
@@ -65,9 +65,11 @@ public class BallMove : MonoBehaviour
 			if (transform.position.x > Edges.leftEdge)
 			{
 				transform.position = Vector3.Lerp
-					(transform.position, new Vector3 (transform.position.x-step, transform.position.y + jump, transform.position.z), 0.3f);
+					(transform.position, new Vector3 (transform.position.x-step, transform.position.y + jump, transform.position.z), 0.2f);
 			}
 		}
+		if (transform.position.y > Edges.topEdge)
+			transform.position = new Vector3 (transform.position.x, Edges.topEdge, transform.position.z);
 	}
 
 	IEnumerator IncreaseByTime()

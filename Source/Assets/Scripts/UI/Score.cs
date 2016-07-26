@@ -9,8 +9,9 @@ public class Score : MonoBehaviour
 
 	void Start () 
 	{
+		text = GetComponent<Text> ();
 		score = 0;
-		text.text = score.ToString ();
+		//text.text = score.ToString ();
 	}
 	
 	public static int SetScore
@@ -24,7 +25,7 @@ public class Score : MonoBehaviour
 			if (value >= 0)
 			{
 				score = value;
-				text.text = score.ToString ();
+				text.text = "Score: "+score.ToString ();
 			}
 		}
 	}
