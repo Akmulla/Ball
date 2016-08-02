@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\Pool.cs" />
      <Compile Include="Assets\Scripts\Ring\InsideRing.cs" />
      <Compile Include="Assets\Scripts\Ring\OutsideRing.cs" />
+     <Compile Include="Assets\Scripts\Ring\Special\InsideRingChangeSize.cs" />
      <Compile Include="Assets\Scripts\ToPoolOnExit.cs" />
      <Compile Include="Assets\Scripts\UI\Score.cs" />
  <Reference Include="UnityEngine.UI">
