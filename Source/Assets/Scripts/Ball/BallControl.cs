@@ -18,7 +18,7 @@ public class BallControl : MonoBehaviour
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
 		{
 			myTouch = Input.GetTouch (0);
-			Vector3 touchPosition = Camera.main.ScreenToWorldPoint(myTouch.position);
+			//Vector3 touchPosition = Camera.main.ScreenToWorldPoint(myTouch.position);
 			//Debug.Log (touchPosition);
 			//Debug.Log(myTouch.position);
 			//if (!EventSystem.current.IsPointerOverGameObject(myTouch.fingerId))

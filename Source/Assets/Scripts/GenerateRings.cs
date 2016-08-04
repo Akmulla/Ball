@@ -26,6 +26,8 @@ public class GenerateRings : MonoBehaviour
 				Random.Range(0.0f,Edges.topEdge),ball.position.z+Random.Range(20.0f,30.0f)),Quaternion.identity);
 			scale = Random.Range (minScale, maxScale);
 			obj.transform.localScale = new Vector3 (scale, scale, scale);
+
+			obj.GetComponentInChildren<InsideRing> ().IsChangingSize = Random.value>0.5f? true : false;
 			yield return new WaitForSeconds (spawnDelay);
 		}
 

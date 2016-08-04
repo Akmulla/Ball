@@ -4,13 +4,13 @@ using System.Collections;
 public class OutsideRing : MonoBehaviour {
 	public string poolName;
 	Pool pool;
-	Collider coll;
+	//Collider coll;
 
 	// Use this for initialization
 	void Start () 
 	{
 		pool = GameObject.Find (poolName).GetComponent<Pool> ();
-		coll = GetComponent<Collider> ();
+		//coll = GetComponent<Collider> ();
 	}
 	void OnCollisionEnter(Collision other)
 	{
