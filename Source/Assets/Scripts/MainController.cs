@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-//using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 
 //------------------------------------------------------------------------------
 // class definition
@@ -8,6 +8,9 @@ using System.Collections;
 public class MainController : MonoBehaviour
 {
 	private static MainController mainController;
+
+	public static bool isPaused;
+	private static float savedTimeScale;
 
 	private string currentSceneName;
 	private string nextSceneName;
@@ -31,12 +34,16 @@ public class MainController : MonoBehaviour
 			}
 		}
 	}
-
+	public static AsyncOperation GetAsync()
+	{
+		return mainController.sceneLoadTask;
+	}
 	//--------------------------------------------------------------------------
 	// protected mono methods
 	//--------------------------------------------------------------------------
 	protected void Awake()
 	{
+		isPaused = false;
 		//Let's keep this alive between scene changes
 		Object.DontDestroyOnLoad(gameObject);
 
@@ -115,10 +122,11 @@ public class MainController : MonoBehaviour
 	// handle anything that needs to happen before loading
 	private void UpdateScenePreload()
 	{
-		sceneLoadTask = Application.LoadLevelAsync(nextSceneName);
+		sceneLoadTask=SceneManager.LoadSceneAsync(nextSceneName);
+		//sceneLoadTask = Application.LoadLevelAsync(nextSceneName);
 		//sceneLoadTask.allowSceneActivation = false;
 		//Debug.Log (sceneLoadTask.progress);
-		//sceneLoadTask=SceneManager.LoadSceneAsync(nextSceneName);
+
 		sceneState = SceneState.Load;
 	}
 
@@ -129,7 +137,6 @@ public class MainController : MonoBehaviour
 		// done loading?
 		if(sceneLoadTask.isDone == true)
 		{
-
 			sceneState = SceneState.Unload;
 		}
 		else
@@ -180,9 +187,26 @@ public class MainController : MonoBehaviour
 	{
 		if(currentSceneName != nextSceneName)
 		{
-			//Debug.Log (currentSceneName);
-			//Debug.Log (nextSceneName);
 			sceneState = SceneState.Reset;
+		}
+	}
+
+	public static void Pause()
+	{
+		if (!isPaused)
+		{
+			savedTimeScale = Time.timeScale;
+			Time.timeScale = 0.0f;
+			isPaused = true;
+		}
+	}
+
+	public static void Unpause()
+	{
+		if (isPaused)
+		{
+			Time.timeScale = savedTimeScale;
+			isPaused = false;
 		}
 	}
 }

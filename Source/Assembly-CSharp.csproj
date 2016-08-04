@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\Ring\InsideRing.cs" />
      <Compile Include="Assets\Scripts\Ring\OutsideRing.cs" />
      <Compile Include="Assets\Scripts\ToPoolOnExit.cs" />
+     <Compile Include="Assets\Scripts\UI\Pause.cs" />
      <Compile Include="Assets\Scripts\UI\Score.cs" />
      <Compile Include="Assets\Scripts\UI\StartGame.cs" />
  <Reference Include="UnityEngine.UI">

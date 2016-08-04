@@ -6,7 +6,7 @@ public class StartGame : MonoBehaviour {
 
 	public void Begin()
 	{
-		//SceneManager.LoadScene ("Game");
 		MainController.SwitchScene("Game");
+		//MainController.GetAsync().allowSceneActivation=true;
 	}
 }

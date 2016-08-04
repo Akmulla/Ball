@@ -15,18 +15,23 @@ public class BallMove : MonoBehaviour
 	[SerializeField]
 	float acceleration;
 	Rigidbody rb;
+	public Vector3 movement;
 
 	void Awake () 
 	{
 		speed = startSpeed;
 		rb = GetComponent<Rigidbody> ();
 		StartCoroutine (IncreaseByTime ());
+		movement = new Vector3 (0, 0, 1);
 	}
 		
 	void Update () 
 	{
-		rb.velocity = new Vector3 (0, 0, 1)*speed;
+		//movement.z = 1.0f;
+		rb.velocity = movement * speed;
 	}
+
+
 
 	public float Speed
 	{
