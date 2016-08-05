@@ -36,18 +36,18 @@ public class GenerateRings : MonoBehaviour
 
 	IEnumerator MassSpawn()
 	{
-		yield return new WaitForSeconds (spawnDelay);
+		yield return new WaitForSeconds (1.0f);
 		while (true)
 		{
-			int count = Random.Range (2, 6);
+			int count = Random.Range (1, 3);
 			for (int i=0;i<count;i++)
 			{
 				GameObject obj = pool.Activate (new Vector3 (Random.Range (ball.position.x-15.0f, ball.position.x+15.0f),
-					Random.Range (ball.position.y-15.0f, ball.position.y+15.0f), ball.position.z + Random.Range (20.0f, 30.0f)), Quaternion.identity);
+					Random.Range (ball.position.y-15.0f, ball.position.y+15.0f), ball.position.z + Random.Range (20.0f, 35.0f)), Quaternion.identity);
 				scale = Random.Range (minScale, maxScale);
 				obj.transform.localScale = new Vector3 (scale, scale, scale);
 			}
-			yield return new WaitForSeconds (Random.Range(0.5f,4.0f));
+			yield return new WaitForSeconds (Random.Range(0.3f,1f));
 		}
 	}
 }
