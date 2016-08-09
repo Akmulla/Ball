@@ -3,8 +3,9 @@ using System.Collections;
 
 public class GenerateRings : MonoBehaviour 
 {
-	Pool pool;
+	public static Pool ringPool;
 	Transform ball;
+
 	[SerializeField] float spawnDelay;
 	[SerializeField] float minScale;
 	[SerializeField] float maxScale;
@@ -13,8 +14,8 @@ public class GenerateRings : MonoBehaviour
 
 	void Start ()
 	{
-		pool = GetComponentInChildren<Pool> ();
-		ball = GameObject.Find ("Ball").transform;
+		ringPool = GetComponentInChildren<Pool> ();
+		ball = BallMove.ball.transform;
 		//StartCoroutine (Spawn ());
 		StartCoroutine(MassSpawn());
 	}
@@ -23,8 +24,8 @@ public class GenerateRings : MonoBehaviour
 	{
 		while (true)
 		{
-			GameObject obj=pool.Activate(new Vector3(Random.Range(Edges.leftEdge,Edges.rightEdge),
-				Random.Range(0.0f,Edges.topEdge),ball.position.z+Random.Range(20.0f,30.0f)),Quaternion.identity);
+			GameObject obj=ringPool.Activate(new Vector3(Random.Range(Edges.leftEdge-5.0f,Edges.rightEdge+5.0f),
+				Random.Range(Edges.botEdge-5.0f,Edges.topEdge+5.0f),ball.position.z+Random.Range(20.0f,30.0f)),Quaternion.identity);
 			scale = Random.Range (minScale, maxScale);
 			obj.transform.localScale = new Vector3 (scale, scale, scale);
 
@@ -42,12 +43,15 @@ public class GenerateRings : MonoBehaviour
 			int count = Random.Range (1, 3);
 			for (int i=0;i<count;i++)
 			{
-				GameObject obj = pool.Activate (new Vector3 (Random.Range (ball.position.x-15.0f, ball.position.x+15.0f),
-					Random.Range (ball.position.y-15.0f, ball.position.y+15.0f), ball.position.z + Random.Range (20.0f, 35.0f)), Quaternion.identity);
-				scale = Random.Range (minScale, maxScale);
-				obj.transform.localScale = new Vector3 (scale, scale, scale);
+				GameObject obj = ringPool.Activate (new Vector3 (Random.Range (ball.position.x-35.0f, ball.position.x+35.0f),
+					Random.Range (ball.position.y-35.0f, ball.position.y+35.0f), ball.position.z + Random.Range (20.0f, 35.0f)), Quaternion.identity);
+				if (obj != null)
+				{
+					scale = Random.Range (minScale, maxScale);
+					obj.transform.localScale = new Vector3 (scale, scale, scale);
+				}
 			}
-			yield return new WaitForSeconds (Random.Range(0.3f,1f));
+			yield return new WaitForSeconds (Random.Range(0.2f,0.5f));
 		}
 	}
 }

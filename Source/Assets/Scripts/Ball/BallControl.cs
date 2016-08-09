@@ -24,7 +24,7 @@ public class BallControl : MonoBehaviour
 		
 			Vector3 direction = newPosition - transform.position;
 			direction.Normalize ();
-			direction *= 1.5f;
+			direction *= 1.25f;
 			direction.z = 1;
 			ballMove.movement = direction;
 			//Debug.Log (touchPosition);

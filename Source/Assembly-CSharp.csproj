@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\Edges.cs" />
      <Compile Include="Assets\Scripts\GenerateRings.cs" />
      <Compile Include="Assets\Scripts\GenerateRoad.cs" />
+     <Compile Include="Assets\Scripts\Ideas\DrawRings.cs" />
      <Compile Include="Assets\Scripts\MainController.cs" />
      <Compile Include="Assets\Scripts\Pool.cs" />
      <Compile Include="Assets\Scripts\Ring\InsideRing.cs" />

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BallMove : MonoBehaviour 
 {
+	static public GameObject ball;
 	[SerializeField]
 	float startSpeed;
 	float speed;
@@ -19,6 +20,7 @@ public class BallMove : MonoBehaviour
 
 	void Awake () 
 	{
+		ball = gameObject;
 		speed = startSpeed;
 		rb = GetComponent<Rigidbody> ();
 		StartCoroutine (IncreaseByTime ());
@@ -27,8 +29,8 @@ public class BallMove : MonoBehaviour
 		
 	void Update () 
 	{
-		//movement.z = 1.0f;
-		rb.velocity = movement * speed;
+        //movement.z = 1.0f;
+        rb.velocity = movement * speed;
 	}
 
 
@@ -55,27 +57,27 @@ public class BallMove : MonoBehaviour
 		speed = startSpeed;
 	}
 
-	public void MakeStep(bool moveRight)
-	{
-		if (moveRight)
-		{
-			if (transform.position.x < Edges.rightEdge)
-			{
-				transform.position = Vector3.Lerp
-					(transform.position, new Vector3 (transform.position.x+step, transform.position.y + jump, transform.position.z), 0.1f);
-			}
-		}
-		else
-		{
-			if (transform.position.x > Edges.leftEdge)
-			{
-				transform.position = Vector3.Lerp
-					(transform.position, new Vector3 (transform.position.x-step, transform.position.y + jump, transform.position.z), 0.1f);
-			}
-		}
-		if (transform.position.y > Edges.topEdge)
-			transform.position = new Vector3 (transform.position.x, Edges.topEdge, transform.position.z);
-	}
+	//public void MakeStep(bool moveRight)
+	//{
+	//	if (moveRight)
+	//	{
+	//		if (transform.position.x < Edges.rightEdge)
+	//		{
+	//			transform.position = Vector3.Lerp
+	//				(transform.position, new Vector3 (transform.position.x+step, transform.position.y + jump, transform.position.z), 0.1f);
+	//		}
+	//	}
+	//	else
+	//	{
+	//		if (transform.position.x > Edges.leftEdge)
+	//		{
+	//			transform.position = Vector3.Lerp
+	//				(transform.position, new Vector3 (transform.position.x-step, transform.position.y + jump, transform.position.z), 0.1f);
+	//		}
+	//	}
+	//	if (transform.position.y > Edges.topEdge)
+	//		transform.position = new Vector3 (transform.position.x, Edges.topEdge, transform.position.z);
+	//}
 
 	IEnumerator IncreaseByTime()
 	{
