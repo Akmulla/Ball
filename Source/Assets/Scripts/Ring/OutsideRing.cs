@@ -17,8 +17,9 @@ public class OutsideRing : MonoBehaviour
 	{
 		if (other.gameObject.name == "Ball")
 		{
-			GenerateRings.ringPool.Deactivate (transform.parent.gameObject);
-			//Destroy (gameObject);
-		}
+            GenerateRings.ringPool.Deactivate (transform.parent.gameObject);
+            //GenerateRings.ringPool.Deactivate(transform.gameObject);
+            //Destroy (gameObject);
+        }
 	}
 }

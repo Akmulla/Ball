@@ -11,8 +11,7 @@ public class InsideRing : MonoBehaviour
 	void Start()
 	{
 		ringSize=GetComponent<Collider> ().bounds.size.x;
-		coeff = Random.Range (0.5f, 2.0f);
-		//Debug.Log (GetComponent<Collider> ().bounds.size.x);
+		//coeff = Random.Range (0.5f, 2.0f);
 	}
 	public bool IsChangingSize
 	{
@@ -50,9 +49,9 @@ public class InsideRing : MonoBehaviour
 		ballSize = other.bounds.size.x;
 		Score.SetScore += (int)(100.0f * (ballSize/ringSize));
 
-		if (isChangingSize)
+		//if (isChangingSize)
 		{
-			other.gameObject.transform.localScale = new Vector3 (coeff, coeff, coeff);
+			//other.gameObject.transform.localScale = new Vector3 (coeff, coeff, coeff);
 		}
 	}
 }

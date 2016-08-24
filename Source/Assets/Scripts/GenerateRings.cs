@@ -16,42 +16,52 @@ public class GenerateRings : MonoBehaviour
 	{
 		ringPool = GetComponentInChildren<Pool> ();
 		ball = BallMove.ball.transform;
-		//StartCoroutine (Spawn ());
-		StartCoroutine(MassSpawn());
-	}
-	
-	IEnumerator Spawn()
-	{
-		while (true)
-		{
-			GameObject obj=ringPool.Activate(new Vector3(Random.Range(Edges.leftEdge-5.0f,Edges.rightEdge+5.0f),
-				Random.Range(Edges.botEdge-5.0f,Edges.topEdge+5.0f),ball.position.z+Random.Range(20.0f,30.0f)),Quaternion.identity);
-			scale = Random.Range (minScale, maxScale);
-			obj.transform.localScale = new Vector3 (scale, scale, scale);
-
-			//obj.GetComponentInChildren<InsideRing> ().IsChangingSize = Random.value>0.5f? true : false;
-			yield return new WaitForSeconds (spawnDelay);
-		}
-
+		StartCoroutine (Spawn ());
+		//StartCoroutine(MassSpawn());
 	}
 
-	IEnumerator MassSpawn()
+    IEnumerator Spawn()
+    {
+        //yield return new WaitForSeconds(1.0f);
+        while (true)
+        {
+                //GameObject obj = ringPool.Activate (new Vector3 (Random.Range (ball.position.x-35.0f, ball.position.x+35.0f),
+                //0.0f, ball.position.z + Random.Range (20.0f, 35.0f)), Quaternion.identity);
+                Vector3 spawnPosition = new Vector3(Random.Range(-13.0f, 13.0f),
+                    0.0f, ball.position.z + 60.0f);
+                GameObject obj = ringPool.Activate(spawnPosition, Quaternion.identity);
+                if (obj != null)
+                {
+                    //scale = Random.Range(minScale, maxScale);
+                    //obj.transform.localScale = new Vector3(scale, scale, scale);
+                }
+            
+            yield return new WaitForSeconds(Random.Range(1.0f, 1.5f));
+        }
+
+    }
+
+    IEnumerator MassSpawn()
 	{
 		yield return new WaitForSeconds (1.0f);
 		while (true)
 		{
-			int count = Random.Range (1, 3);
+			int count = Random.Range (2, 4);
 			for (int i=0;i<count;i++)
 			{
-				GameObject obj = ringPool.Activate (new Vector3 (Random.Range (ball.position.x-35.0f, ball.position.x+35.0f),
-					Random.Range (ball.position.y-35.0f, ball.position.y+35.0f), ball.position.z + Random.Range (20.0f, 35.0f)), Quaternion.identity);
-				if (obj != null)
+
+                //GameObject obj = ringPool.Activate (new Vector3 (Random.Range (ball.position.x-35.0f, ball.position.x+35.0f),
+                //0.0f, ball.position.z + Random.Range (20.0f, 35.0f)), Quaternion.identity);
+                Vector3 spawnPosition=new Vector3(Random.Range(-15.0f,15.0f),
+                    0.0f, ball.position.z + Random.Range(35.0f, 60.0f));
+                GameObject obj = ringPool.Activate(spawnPosition, Quaternion.identity);
+                if (obj != null)
 				{
-					scale = Random.Range (minScale, maxScale);
-					obj.transform.localScale = new Vector3 (scale, scale, scale);
+					//scale = Random.Range (minScale, maxScale);
+					//obj.transform.localScale = new Vector3 (scale, scale, scale);
 				}
 			}
-			yield return new WaitForSeconds (Random.Range(0.2f,0.5f));
+			yield return new WaitForSeconds (Random.Range(0.5f,1.5f));
 		}
 	}
 }

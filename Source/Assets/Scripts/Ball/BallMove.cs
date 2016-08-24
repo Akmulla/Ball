@@ -9,13 +9,14 @@ public class BallMove : MonoBehaviour
 	float speed;
 	[SerializeField]
 	float maxSpeed;
-	[SerializeField]
-	float step;
-	[SerializeField]
-	float jump;
+	//[SerializeField]
+	//float step;
+	//[SerializeField]
+	//float jump;
 	[SerializeField]
 	float acceleration;
-	Rigidbody rb;
+    
+    Rigidbody rb;
 	public Vector3 movement;
 
 	void Awake () 
@@ -30,7 +31,8 @@ public class BallMove : MonoBehaviour
 	void Update () 
 	{
         //movement.z = 1.0f;
-        rb.velocity = movement * speed;
+        movement.z = speed;
+        rb.velocity = movement;
 	}
 
 
