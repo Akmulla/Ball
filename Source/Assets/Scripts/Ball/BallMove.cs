@@ -3,11 +3,14 @@ using System.Collections;
 
 public class BallMove : MonoBehaviour 
 {
+    static public BallMove ballMove;
 	static public GameObject ball;
 	[SerializeField]
 	float startSpeed;
 	float speed;
-	[SerializeField]
+    [SerializeField]
+    float minSpeed;
+    [SerializeField]
 	float maxSpeed;
 	//[SerializeField]
 	//float step;
@@ -21,6 +24,7 @@ public class BallMove : MonoBehaviour
 
 	void Awake () 
 	{
+        ballMove = this;
 		ball = gameObject;
 		speed = startSpeed;
 		rb = GetComponent<Rigidbody> ();
@@ -45,10 +49,19 @@ public class BallMove : MonoBehaviour
 		}
 		set
 		{
-			if ((value >= 0)&&(speed<maxSpeed))
+			if (speed>maxSpeed)
 			{
 				speed = value;
 			}
+            else
+                if (speed<minSpeed)
+            {
+                speed = minSpeed;
+            }
+            else
+            {
+                speed = value;
+            }
 		}
 	}
 	/// <summary>

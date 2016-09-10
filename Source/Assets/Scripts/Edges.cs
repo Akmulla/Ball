@@ -4,8 +4,13 @@ using System.Collections;
 public class Edges : MonoBehaviour 
 {
 	public static float leftEdge,rightEdge,topEdge,botEdge;
+    public static float leftWall;
+    public static float rightWall;
+
 	void Awake () 
 	{
+        leftWall = -13.0f;
+        rightWall = 13.0f;
         //leftEdge = -10.0f;
         //rightEdge = 10.0f;
         //topEdge = 10.0f;

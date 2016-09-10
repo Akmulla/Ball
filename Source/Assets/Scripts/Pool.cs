@@ -14,7 +14,8 @@ public class Pool : MonoBehaviour
         tos = size;
         for (int i = 0 ; i < size ; i++)
         {
-			stck[i] = ((GameObject)Instantiate(obj, new Vector3(0.0f,0.0f,15.0f), Quaternion.identity));
+			stck[i] = ((GameObject)Instantiate(obj, new Vector3(0.0f,0.0f,-15.0f), Quaternion.identity));
+            stck[i].GetComponent<ToPoolOnExit>().pool = this;
             stck[i].SetActive(false);
         }
     }
@@ -22,9 +23,12 @@ public class Pool : MonoBehaviour
     public GameObject Activate(Vector3 pos, Quaternion rot)
     {
         GameObject obj = Pop();
-        obj.transform.position = pos;
-        obj.transform.rotation = rot;
-        obj.SetActive(true);
+        if (obj != null)
+        {
+            obj.transform.position = pos;
+            obj.transform.rotation = rot;
+            obj.SetActive(true);
+        }
         return (obj);
     }
 
@@ -39,7 +43,7 @@ public class Pool : MonoBehaviour
     {
         if (tos >= stck.Length)
         {
-            Debug.Log("Стек заполнен");
+            Debug.Log(obj.ToString() + ": Стек заполнен");
 			Destroy (obj);
             return;
         }
@@ -51,7 +55,7 @@ public class Pool : MonoBehaviour
     {
         if (tos <= 0)
         {
-            Debug.Log("Стек пуст");
+            Debug.Log(obj.ToString()+": Стек пуст");
             return null;
         }
         tos--;

@@ -3,19 +3,19 @@ using System.Collections;
 
 public class ToPoolOnExit : MonoBehaviour 
 {
-	public string poolName;
-	Pool pool;
+	//public string poolName;
+	public Pool pool;
 
 	// Use this for initialization
 	void Start () 
 	{
-		pool = GameObject.Find (poolName).GetComponent<Pool> ();
+		//pool = GameObject.Find (poolName).GetComponent<Pool> ();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (transform.position.z < Camera.main.transform.position.z-15.0f)
+		if (transform.position.z < Camera.main.transform.position.z-30.0f)
 		{
 			pool.Deactivate (gameObject);
 		}
