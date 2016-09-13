@@ -102,4 +102,17 @@ public class BallMove : MonoBehaviour
 			yield return new WaitForSeconds (1.0f);
 		}
 	}
+
+    public void SlowDown()
+    {
+        StartCoroutine(SlowDownCoroutine());
+    }
+
+    IEnumerator SlowDownCoroutine()
+    {
+        BallMove.ballMove.Speed -= 3.0f;
+        yield return new WaitForSeconds(10.0f);
+        BallMove.ballMove.Speed += 3.0f;
+        yield return null;
+    }
 }

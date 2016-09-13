@@ -45,8 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Archive\DrawRings.cs" />
      <Compile Include="Assets\Scripts\AbilityDataClass.cs" />
-     <Compile Include="Assets\Scripts\Archive\DrawRings.cs" />
      <Compile Include="Assets\Scripts\Ball\BallControl.cs" />
      <Compile Include="Assets\Scripts\Ball\BallMove.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
@@ -54,7 +54,9 @@
      <Compile Include="Assets\Scripts\GateDataClass.cs" />
      <Compile Include="Assets\Scripts\GenerateObjects.cs" />
      <Compile Include="Assets\Scripts\GenerateRoad.cs" />
+     <Compile Include="Assets\Scripts\Hp.cs" />
      <Compile Include="Assets\Scripts\MainController.cs" />
+     <Compile Include="Assets\Scripts\Objects\DangerZone.cs" />
      <Compile Include="Assets\Scripts\Objects\Gates.cs" />
      <Compile Include="Assets\Scripts\Objects\InsideGate.cs" />
      <Compile Include="Assets\Scripts\Objects\OutsideRing.cs" />

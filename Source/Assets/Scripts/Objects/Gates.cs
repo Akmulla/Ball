@@ -10,7 +10,7 @@ public class Gates : MonoBehaviour
     public AbilityDataClass abilityData;
     public SpriteRenderer spriteRenderer;
     float cylinderRadius;
-    public enum Ability { none,x2,x3,x5,x10,Clock,Count};
+    public enum Ability { none,x2,x3,x5,x10,Clock,Hp,Count};
     delegate void AbilityDelegate();
     AbilityDelegate[] abilityDelegate;
     public Ability activeAbility;
@@ -27,6 +27,7 @@ public class Gates : MonoBehaviour
         abilityDelegate[(int)Ability.x5] = AbilityX5;
         abilityDelegate[(int)Ability.x10] = AbilityX10;
         abilityDelegate[(int)Ability.Clock] = Clock;
+        abilityDelegate[(int)Ability.Hp] = GetHp;
 
         cylinderRadius = GetComponentInChildren<CapsuleCollider>().radius;
     }
@@ -44,7 +45,10 @@ public class Gates : MonoBehaviour
     {
         abilityData = newAbilityData;
         activeAbility = abilityData.ability;
-        spriteRenderer.sprite = abilityData.abilitySprite;
+        if (abilityData.abilitySprite != null)
+            spriteRenderer.sprite = abilityData.abilitySprite;
+        else
+            spriteRenderer.sprite = null;
     }
 
     public void GoThroughRing()
@@ -80,14 +84,12 @@ public class Gates : MonoBehaviour
 
     void Clock()
     {
-        StartCoroutine(ClockCoroutine());
+        BallMove.ballMove.SlowDown();
     }
 
-    IEnumerator ClockCoroutine()
+    void GetHp()
     {
-        BallMove.ballMove.Speed -= 3.0f;
-        yield return new WaitForSeconds(10.0f);
-        BallMove.ballMove.Speed += 3.0f;
-        yield return null;
+        Hp.hpComponent.GetHp();
     }
+
 }
