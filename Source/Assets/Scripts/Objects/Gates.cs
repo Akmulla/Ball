@@ -9,8 +9,8 @@ public class Gates : MonoBehaviour
     public BoxCollider boxCollider;
     public AbilityDataClass abilityData;
     public SpriteRenderer spriteRenderer;
-    float cylinderRadius;
-    public enum Ability { none,x2,x3,x5,x10,Clock,Hp,Count};
+    
+    public enum Ability { none,x2,x3,x5,x10,Clock,Hp,Shield,Jump,Count};
     delegate void AbilityDelegate();
     AbilityDelegate[] abilityDelegate;
     public Ability activeAbility;
@@ -28,16 +28,17 @@ public class Gates : MonoBehaviour
         abilityDelegate[(int)Ability.x10] = AbilityX10;
         abilityDelegate[(int)Ability.Clock] = Clock;
         abilityDelegate[(int)Ability.Hp] = GetHp;
+        abilityDelegate[(int)Ability.Shield] = Shield;
+        abilityDelegate[(int)Ability.Jump] = AbilityJump;
 
-        cylinderRadius = GetComponentInChildren<CapsuleCollider>().radius;
     }
 
     public void SetData(GateDataClass newGateData)
     {
         gateData = newGateData;
-        left.localPosition = new Vector3(-gateData.size - cylinderRadius,0.0f,0.0f);
-        right.localPosition = new Vector3(gateData.size + cylinderRadius, 0.0f, 0.0f);
-        boxCollider.size = new Vector3(gateData.size+cylinderRadius*2.0f
+        left.localPosition = new Vector3(-gateData.size - GenerateObjects.cylinderRadius,0.0f,0.0f);
+        right.localPosition = new Vector3(gateData.size + GenerateObjects.cylinderRadius, 0.0f, 0.0f);
+        boxCollider.size = new Vector3(gateData.size+ GenerateObjects.cylinderRadius *2.0f
             ,boxCollider.size.y,boxCollider.size.z);
     }
 
@@ -89,7 +90,17 @@ public class Gates : MonoBehaviour
 
     void GetHp()
     {
+        //сердечко
         Hp.hpComponent.GetHp();
     }
 
+    void Shield()
+    {
+        StartCoroutine(Ball.GetShield());
+    }
+
+    void AbilityJump()
+    {
+        Jump.jump.GetJump();
+    }
 }

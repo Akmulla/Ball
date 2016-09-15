@@ -35,15 +35,18 @@ public class Hp : MonoBehaviour
 
     public void LoseHp()
     {
-        if (hp > 0)
+        if (!Ball.invincible)
         {
-            hpImage[tos].SetActive(false);
-            hp--;
-            tos--;
-        }
-        if (hp<=0)
-        {
-            //MainController.LoseGame();
+            if (hp > 0)
+            {
+                hpImage[tos].SetActive(false);
+                hp--;
+                tos--;
+            }
+            if (hp <= 0)
+            {
+                //MainController.LoseGame();
+            }
         }
     }
 

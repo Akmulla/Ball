@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Archive\DrawRings.cs" />
      <Compile Include="Assets\Scripts\AbilityDataClass.cs" />
+     <Compile Include="Assets\Scripts\Ball\Ball.cs" />
      <Compile Include="Assets\Scripts\Ball\BallControl.cs" />
      <Compile Include="Assets\Scripts\Ball\BallMove.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
@@ -63,6 +64,7 @@
      <Compile Include="Assets\Scripts\Objects\Walls.cs" />
      <Compile Include="Assets\Scripts\Pool.cs" />
      <Compile Include="Assets\Scripts\ToPoolOnExit.cs" />
+     <Compile Include="Assets\Scripts\UI\Jump.cs" />
      <Compile Include="Assets\Scripts\UI\Pause.cs" />
      <Compile Include="Assets\Scripts\UI\Score.cs" />
      <Compile Include="Assets\Scripts\UI\StartGame.cs" />
